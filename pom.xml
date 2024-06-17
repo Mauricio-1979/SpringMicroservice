@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>   <!-- copiado de spring initializer-->
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.2.6</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
+<!-- este grupoId se copia en el parent del hijo Gateway y Eureka-->
+  <groupId>com.mycompany.app</groupId>
+  <artifactId>SpringMicroservices</artifactId>
+  <version>1.0-SNAPSHOT</version>
+<!-- fin de grupo copiado en parent de Gateway y Eureka-->
+  <name>SpringMicroservices</name>   <!-- ****** ///// RVISAR QUE SE BORRO /////   ****     -->
+  <packaging>pom</packaging> <!-- para indicar que solo es un contenedor NO ejecutable -->
+<!-- agregamos gateway y eureka como modulo del padre-->
+  <modules>
+    <module>microservice-gateway</module>
+    <module>microservice-eureka</module>
+    <module>microservice-config</module>
+    <module>microservice-student</module>
+    <module>microservice-course</module>
+  </modules>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+    <dependency>                      <!-- Lombok va a ser compartido en todos los microservicios-->
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.32</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-aop</artifactId>
+          <version>3.1.4</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>

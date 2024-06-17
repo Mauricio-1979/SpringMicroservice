@@ -1,0 +1,26 @@
+# le agrego Eureka false xq no esnecesario que Gateway se registre en Eureka
+eureka:
+  client:
+    register-with-eureka: false
+server:
+  port: 8080
+
+spring:
+#  config:  # esto viene de service eureka
+#    import: optional:configserver:http://localhost:8888
+  application:
+    name: msvc-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true  # indicamos que el gateway va a estar activo
+      routes:
+        - id: microservice-student
+          uri: http://localhost:8090
+          predicates:
+            - Path=/api/student/**
+        - id: microservice-course
+          uri: http://localhost:9090
+          predicates:
+            - Path=/api/course/**
